@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "pythonic-kittens"
+version = "0.1.0"
+description = "An implementation of Exploding Kittens with python to test web sockets."
+authors = ["Antonio <Tonivalle15@gmail.com>"]
+readme = "README.md"
+packages = [{include = "pythonic_kittens", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
