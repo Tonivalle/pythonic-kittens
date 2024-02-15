@@ -8,8 +8,37 @@ packages = [{include = "pythonic_kittens", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pygame = "^2.5.2"
 
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+isort = "^5.13.2"
+pytest = "^8.0.0"
+mypy = "^1.8.0"
+pylint = "^3.0.3"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+strict = false
+pretty = true
+show_error_codes = true
+show_error_context = true
+implicit_reexport = true
+namespace_packages = true
+
+[tool.pylint]
+max-line-length = 120
+min-public-methods = 0
+disable = [
+    "missing-module-docstring",
+]
