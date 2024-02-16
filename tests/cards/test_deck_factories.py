@@ -9,3 +9,8 @@ from pythonic_kittens.cards.factories import generate_deck_from_players
 def test_factory_creates_correct_deck_for_n_players(n_players, total_cards):
     deck = generate_deck_from_players(n_players=n_players)
     assert len(deck.cards) == total_cards
+
+
+def test_factory_raises_if_more_than_10_players():
+    with pytest.raises(ValueError, match="Number of players"):
+        generate_deck_from_players(n_players=11)
