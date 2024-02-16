@@ -21,12 +21,11 @@ def generate_deck_from_players(n_players: int) -> Deck:
 def _select_deck_size(n_players: int) -> DeckSize:
     if 2 <= n_players <= 3:
         return small_deck
-    elif n_players <= 7:
+    if n_players <= 7:
         return medium_deck
-    elif n_players <= 10:
+    if n_players <= 10:
         return big_deck
-    else:
-        raise ValueError(f"Number of players {n_players} not supported.")
+    raise ValueError(f"Number of players {n_players} not supported.")
 
 
 def _generate_exploding_kittens(n_players: int) -> list[Card]:
