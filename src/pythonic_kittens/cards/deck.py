@@ -1,7 +1,7 @@
 import random
 from dataclasses import dataclass
 
-from pythonic_kittens.cards.cards import Card
+from pythonic_kittens.cards.card import Card, CardKind
 
 
 @dataclass
@@ -22,7 +22,7 @@ class Deck:
         random.shuffle(self.cards)
 
     @property
-    def size(self):
+    def size(self) -> int:
         """
         Size of the deck
         """
@@ -41,3 +41,23 @@ class Deck:
         Return the first n_cards from the deck (without removing them from the deck).
         """
         return self.cards[:n_cards]
+
+    def extract_card_kind(self, kind: CardKind, n_cards: int) -> list[Card]:
+        """
+        get a specific card kind from deck and returns them.
+        """
+        cards_to_return, cards_remaining = self._extract_cards(kind, n_cards)
+        self.cards = cards_remaining
+        return cards_to_return
+
+    def _extract_cards(self, kind: CardKind, n_cards: int) -> tuple[list[Card], list[Card]]:
+        cards_to_return = []
+        cards_remaining = []
+        count = 0
+        for card in self.cards:
+            if card.kind == kind and count < n_cards:
+                cards_to_return.append(card)
+                count += 1
+            else:
+                cards_remaining.append(card)
+        return cards_to_return, cards_remaining

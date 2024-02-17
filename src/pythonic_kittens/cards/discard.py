@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from pythonic_kittens.cards.cards import Card
+from pythonic_kittens.cards.card import Card
 
 
 @dataclass
@@ -12,7 +12,7 @@ class DiscardPile:
     cards: list[Card] = field(default_factory=list)
 
     @property
-    def size(self):
+    def size(self) -> int:
         """
         Size of the discard pile
         """

@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
-from typing import Any
+
+from pythonic_kittens.cards import Card, CardKind
 
 
 @dataclass
@@ -16,7 +17,21 @@ class Player:
     """
     Score of the player
     """
-    hand: list[Any] = field(default_factory=list, init=False)
+    hand: list[Card] = field(default_factory=list, init=False)
     """
     Current cards the player has available.
     """
+
+    @property
+    def has_defuse(self) -> bool:
+        """
+        Returns True if any card in the players hand is a defuse.
+        """
+        return any(card.kind == CardKind.DEFUSE for card in self.hand)
+
+    @property
+    def hand_size(self) -> int:
+        """
+        Returns the number of cards the player has.
+        """
+        return len(self.hand)

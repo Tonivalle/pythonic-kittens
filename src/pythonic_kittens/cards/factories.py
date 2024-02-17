@@ -1,7 +1,7 @@
 from itertools import chain
 
-from pythonic_kittens.cards.cards import Card, CardKind
-from pythonic_kittens.cards.deck import Deck
+from .card import Card, CardKind
+from .deck import Deck
 
 DeckSize = dict[CardKind, int]
 

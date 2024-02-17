@@ -25,3 +25,10 @@ class Game:
 
     deck: Deck
     discard_pile: DiscardPile
+
+    @property
+    def player_names(self) -> list[str]:
+        """
+        Returns a list of player names.
+        """
+        return [player.name for player in self.players]
