@@ -21,6 +21,13 @@ class Deck:
         """
         random.shuffle(self.cards)
 
+    @property
+    def size(self):
+        """
+        Size of the deck
+        """
+        return len(self.cards)
+
     def draw(self, n_cards: int = 1) -> list[Card]:
         """
         Remove the first n_cards from the deck and return them.
